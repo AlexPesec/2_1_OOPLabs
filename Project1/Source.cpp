@@ -2,6 +2,6 @@
 #include <cstdlib>
 
 int main() {
-	std::cout << "test" << std::endl;
+	std::cout << "Test 2" << std::endl;
 	return 0;
 }
