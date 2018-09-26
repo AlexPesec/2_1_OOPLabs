@@ -13,7 +13,7 @@ int main() {
 		Figure* ptr;
 		if (n == 1) ptr = new FourSquare(2);
 		else if (n == 2) ptr = new Rectangle(2, 2);
-		else if (n == 3) ptr = new Trapeze(2, 3, 2, 2);
+		else if (n == 3) ptr = new Trapeze(2, 2, 2, 2, 2);
 		else if (n == 4) break;
 		else {
 			std::cout << "Bad input, try again\n" << std::endl;

@@ -27,7 +27,7 @@ double Rectangle::Square() {
 }
 
 void Rectangle::Print() {
-	std::cout << "a = " << side_a << "\nb = " << side_b << std::endl;
+	std::cout << "sides: a = " << side_a << " b = " << side_b << std::endl;
 }
 
 Rectangle::~Rectangle() {

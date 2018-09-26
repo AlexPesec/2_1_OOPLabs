@@ -10,7 +10,7 @@ class Trapeze : public Figure {
 public:
 	Trapeze();
 	Trapeze(std::istream &is);
-	Trapeze(size_t a, size_t b, size_t c, size_t d);
+	Trapeze(size_t a, size_t b, size_t c, size_t d, size_t h);
 	Trapeze(const Trapeze& orig);
 
 	double Square() override;
@@ -22,6 +22,7 @@ private:
 	size_t basis_b;
 	size_t side_a;
 	size_t side_b;
+	size_t height;
 };
 
 #endif
