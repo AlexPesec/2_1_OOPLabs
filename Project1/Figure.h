@@ -1,5 +1,5 @@
-#ifndef FIGURE_H
-#define	FIGURE_H
+#ifndef FIGURE_H_INCLUDED
+#define	FIGURE_H_INCLUDED
 
 class Figure {
 public:

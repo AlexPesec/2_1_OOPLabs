@@ -1,7 +1,12 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "Square.h"
+
 int main() {
-	std::cout << "Test 2" << std::endl;
+	Figure *ptr = new Square(2);
+	ptr->Print();
+	std::cout << ptr->Square << std::endl;
+	delete ptr;
 	return 0;
 }
