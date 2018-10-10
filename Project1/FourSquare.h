@@ -13,6 +13,13 @@ public:
 	FourSquare(size_t a);
 	FourSquare(const FourSquare& orig);
 
+	friend bool operator==(const FourSquare& left,const FourSquare& right);
+	FourSquare& operator=(const FourSquare& right);
+	friend FourSquare operator+(const FourSquare& left, const FourSquare& right);
+
+	friend std::ostream& operator<<(std::ostream& os, const FourSquare& obj);
+	friend std::istream& operator>>(std::istream& is, FourSquare& obj);
+
 	double Square() override;
 	void Print() override;
 
