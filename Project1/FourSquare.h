@@ -14,6 +14,7 @@ public:
 	FourSquare(const FourSquare& orig);
 
 	friend bool operator==(const FourSquare& left,const FourSquare& right);
+	friend bool operator>(const FourSquare& left, const FourSquare& right);
 	FourSquare& operator=(const FourSquare& right);
 	friend FourSquare operator+(const FourSquare& left, const FourSquare& right);
 

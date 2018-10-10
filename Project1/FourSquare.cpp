@@ -21,7 +21,11 @@ FourSquare::FourSquare(const FourSquare& orig) {
 }
 
 bool operator==(const FourSquare& left, const FourSquare& right) {
-	return left.side - right.side;
+	return left.side == right.side;
+}
+
+bool operator>(const FourSquare& left, const FourSquare& right) {
+	return left.side > right.side;
 }
 
 FourSquare& FourSquare::operator=(const FourSquare& right) {

@@ -119,12 +119,16 @@
     <ClInclude Include="Trapeze.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="FourSquare.h" />
+    <ClInclude Include="TTree.h" />
+    <ClInclude Include="TTreeNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Trapeze.cpp" />
     <ClCompile Include="FourSquare.cpp" />
+    <ClCompile Include="TTree.cpp" />
+    <ClCompile Include="TTreeNode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
