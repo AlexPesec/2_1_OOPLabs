@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
+#include <function>
 #include <vector>
 #include <memory>
 
@@ -22,21 +23,21 @@ void Help() {
 	std::cout << "Names of figures:\ns - square\nr - rectangle\nt - trapeze\n" << std::endl;
 }
 
-class Lambda {
-public:
-    explicit Lambda (size_t & _a): a(_a) {}
-    size_t operator () () {
-        a = rand();
-        return a;
-    }
-private:
-    size_t a;
-};
-
 int main() {
     std::shared_ptr<TStack<MyFigure>> T = std::shared_ptr<TStack<MyFigure>>(new TStack<MyFigure>());
 	std::shared_ptr<MyFigure> ptr;
     char ch;
+
+    typedef std::function<void (void) > command;
+    command cmd_insert = [&]() {
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distribution(1, 1000);
+ 
+        for (int i = 0; i < 10; i++) {
+            int side = distribution(generator);
+            tree_figure.push(new FourSquare(side));
+        }
+    };
 
     Help();
 
@@ -70,14 +71,8 @@ int main() {
             std::cin >> a;
 
             std::vector<size_t> V (a);
-
-            std::for_each(V.begin(), V.end(), [](size_t _n) {_n = rand();});
-
-            for (int i = 0; i < a; ++i) std::cout << V[i] << ' ';
-/*
-            for (int i = 0; i < a; ++i)
-                T->Insert(std::shared_ptr<MyFigure>(new MyFigure(new FourSquare(V[i]))));
-*/
+            std::for_each(V.begin(), V.end(), [](comand*));
+			
 		} else if (ch == 'p') {
             std::for_each(T->begin(), T->end(), [](std::shared_ptr<MyFigure> _F) {std::cout << *_F;});
 		} else if (ch == 'l') {
