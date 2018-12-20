@@ -1,30 +1,70 @@
-#ifndef TTREENODE_H_NOT_INCLUDED
-#define TTREENODE_H_NOT_INCLUDED
+#ifndef TTREENODE_H_INCLUDED
+#define	TTREENODE_H_INCLUDED
 
-#include "FourSquare.h"
+#include <iostream>
+#include <cstdlib>
+#include <memory>
+
+#include "TIterator.h"
+#include "Figure.h"
+#include "TStack.h"
 
 class TTreeNode {
 public:
-	TTreeNode(const FourSquare& Foursquare);
-	TTreeNode(const TTreeNode& orig);
-	friend std::ostream& operator<<(std::ostream& os, const TTreeNode& obj);
+    TTreeNode() {
+        this->Value = nullptr;
+        this->Right = nullptr;
+        this->Left = nullptr;
+        this->LeftIn = false;
+        this->RightIn = false;
+    }
 
-	friend bool operator>(const TTreeNode& left, const TTreeNode& right);
+    TTreeNode(std::shared_ptr<MyFigure> value) {
+        std::shared_ptr<TStack<MyFigure>> new_val = std::shared_ptr<TStack<MyFigure>> (new TStack<MyFigure>(value));
+        this->Value = new_val;
+        this->Right = nullptr;
+        this->Left = nullptr;
+        this->LeftIn = false;
+        this->RightIn = false;
+    }
 
-	void SetLeft(TTreeNode* left);
-	void SetRight(TTreeNode* right);
+    std::shared_ptr<TStack<MyFigure>> GetValue() {return this->Value;}
+    void SetValue(std::shared_ptr<TStack<MyFigure>> new_val) {this->Value = new_val;}
 
-	TTreeNode* GetLeft();
-	TTreeNode* GetRight();
+    std::shared_ptr<TTreeNode> GetRight() {return this->RightIn ? this->Right : nullptr;}
+    std::shared_ptr<TTreeNode> GetNext() {return this->Right;}
+    void SetRight(std::shared_ptr<TTreeNode> new_right) {this->Right = new_right;}
+    bool RightIns() {return this->RightIn;}
+    void InsRight() {this->RightIn = true;}
+    void UnInsRight() {this->RightIn = false;}
 
-	FourSquare GetFourSquare() const;
+    std::shared_ptr<TTreeNode> GetLeft() {return this->LeftIn ? this->Left : nullptr;}
+    std::shared_ptr<TTreeNode> GetPrev() {return this->Left;}
+    void SetLeft(std::shared_ptr<TTreeNode> new_left) {this->Left = new_left;}
+    bool LeftIns() {return this->LeftIn;}
+    void InsLeft() {this->LeftIn = true;}
+    void UnInsLeft() {this->LeftIn = false;}
 
-	virtual ~TTreeNode();
+    friend std::ostream& operator<<(std::ostream& os, const TTreeNode& obj) {
+        if (!obj.LeftIn) os << *obj.Left;
+        os << *obj.Value;
+        if (!obj.RightIn) os << *obj.Right;
+        return os;
+    }
+
+    ~TTreeNode () {
+        this->Value = nullptr;
+        this->Right = nullptr;
+        this->Left = nullptr;
+    }
+
 private:
-	FourSquare Foursquare;
-	TTreeNode* left;
-	TTreeNode* right;
-};
+    std::shared_ptr<TStack<MyFigure>> Value;
+    std::shared_ptr<TTreeNode> Right;
+    std::shared_ptr<TTreeNode> Left;
 
+    bool LeftIn;
+    bool RightIn;
+};
 
 #endif
